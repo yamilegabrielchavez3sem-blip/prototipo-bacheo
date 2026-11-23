@@ -1,0 +1,4 @@
+streamlit
+plotly>=5.24
+pandas
+numpy
