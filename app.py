@@ -31,19 +31,19 @@ puntaje = df["ksuelo"] * df["esals"] * lluvia / 40
 df["P72h"] = 1 - np.exp(-puntaje)
 df["alerta"] = df["P72h"] > umbral
 
-# 6. Dibujamos el mapa
-fig = px.scatter_map(
-    df, lat="lat", lon="lon",
-    color="P72h", size="esals",
-    hover_name="tramo", zoom=10,
+# 6. Dibujamos los tramos (sin mapa de fondo)
+fig = px.scatter(
+    df, x="lon", y="lat",
+    color="P72h", size="esals", size_max=22,
+    hover_name="tramo",
+    hover_data={"zona": True, "P72h": ":.2f", "lon": False, "lat": False},
     color_continuous_scale="RdYlGn_r", range_color=(0, 1),
-    size_max=18,
+    labels={"lon": "Longitud", "lat": "Latitud"},
 )
-fig.update_layout(map_style="carto-positron")
+fig.update_layout(height=500)
 st.plotly_chart(fig, use_container_width=True)
 
 # 7. La tabla de alertas
 st.subheader("Tramos en alerta")
 alertas = df[df["alerta"]].sort_values("P72h", ascending=False)
 st.dataframe(alertas[["tramo", "zona", "P72h"]])
-st.link_button("Abrir mapa preliminar", "https://goo.gl/maps/A4sEqfhR95rWRN6eA")
