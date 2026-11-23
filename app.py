@@ -5,8 +5,8 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 # 1. El título de la página
-st.title("Prioridad de mantenimiento vial")
-st.caption("⚠️ Datos ilustrativos: son inventados para el prototipo.")
+st.title("Prioridad de mantenimiento vial en Corredor Conurbano Norte")
+st.caption("Datos ilustrativos:")
 
 # 2. Inventamos 30 tramos de calle
 rng = np.random.default_rng(1)   # "dado" que siempre da los mismos números
