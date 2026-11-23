@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+import streamlit.components.v1 as components
 
 # 1. El título de la página
 st.title("Prioridad de mantenimiento vial")
@@ -47,3 +48,7 @@ st.plotly_chart(fig, use_container_width=True)
 st.subheader("Tramos en alerta")
 alertas = df[df["alerta"]].sort_values("P72h", ascending=False)
 st.dataframe(alertas[["tramo", "zona", "P72h"]])
+
+#8 Mapa Geografico
+st.subheader("Mapa preliminar")
+components.iframe("https://www.google.com/maps/d/u/0/viewer?ll=19.757106937829956%2C-99.21639761518024&z=12&mid=1gXEMdkyfcYGuZumynE1zWsDj3PSRvkc", height=500)
