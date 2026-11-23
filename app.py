@@ -37,8 +37,9 @@ fig = px.scatter_map(
     color="P72h", size="esals",
     hover_name="tramo", zoom=10,
     color_continuous_scale="RdYlGn_r", range_color=(0, 1),
+    size_max=18,
 )
-fig.update_layout(map_style="open-street-map")
+fig.update_layout(map_style="carto-positron")
 st.plotly_chart(fig, use_container_width=True)
 
 # 7. La tabla de alertas
